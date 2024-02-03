@@ -1,2 +1,2 @@
 all:
-	bash -c "./build-then-deploy.sh & ; disown"
+	bash -c "nohup ./build-then-deploy.sh & disown"

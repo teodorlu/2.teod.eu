@@ -66,6 +66,13 @@
       " are less messy.")
    (p "I am " (twitterlink "teodorlu") " on Twitter, and "
       (githublink "teodorlu") " on Github.")
+   (p "..... .....")
+   (p "..... .....")
+   (p "..... .....")
+   (p "..... .....")
+   (p "..... .....")
+   (p "..... .....")
+   (p "..... .....")
    (p "Have a nice day!"
       [:br]
       "Teodor")]])

@@ -5,7 +5,8 @@
     :title "teod.eu"}}
   (:require
    [nextjournal.clerk :as clerk]
-   [nextjournal.clerk.viewer :as clerk.viewer]))
+   [nextjournal.clerk.viewer :as clerk.viewer]
+   [clojure.string :as str]))
 
 (comment
   ;; define stuff here
@@ -25,6 +26,21 @@
 (defn p [& children]
   (into [:p.font-arial] children))
 
+(defn cleanlink [link]
+  (let [clean (-> link
+                  (str/replace #"^https://" "")
+                  (str/replace #"^http://" "")
+                  (str/replace #"^www" ""))]
+    [:a {:href link} clean]))
+
+(defn twitterlink [username]
+  (let [link (str "https://twitter.com/" username)]
+    [:a {:href link} (str "@" username)]))
+
+(defn githublink [username]
+  (let [link (str "https://github.com/" username)]
+    [:a {:href link} (str "@" username)]))
+
 {::clerk/visibility {:result :show}}
 ^{::clerk/width :full}
 (clerk/html
@@ -40,7 +56,14 @@
   font-family: Arial, sans-serif;
 }
 "}}]
-  (h1 "hi")
-  (p "hi hi ")
-  ]
- )
+  (h1 "Where is Teodor?")
+  (p "Hello!")
+  (p "I mess around on " (cleanlink "https://play.teod.eu") ".")
+  (p (cleanlink "https://www.teodorheggelund.com")
+     " and " (cleanlink "https://www.teodorheggelund.no")
+     " are less messy.")
+  (p "I am " (twitterlink "teodorlu") " on Twitter, and "
+     (githublink "teodorlu") " on Github.")
+  (p "Have a nice day!"
+     [:br]
+     "Teodor")])

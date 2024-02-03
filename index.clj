@@ -26,12 +26,15 @@
            ;; FIXME: this makes escaping in SSR happy
            :dangerouslySetInnerHTML {:__html
                                      "
-#clerk .notebook-viewer .viewer:first-child {
-  display: none;
+#clerk .notebook-viewer .viewer:first-child {display: none;}
+.dark-mode-toggle { display: none; }
+
+.font-arial {
+  font-family: Arial, sans-serif;
 }
 "}}]
-  [:h1 "hi"]
-  [:p "hi hi "]
+  [:h1.font-arial "hi"]
+  [:p.font-arial "hi hi "]
   ;; we can still rely on Clerk data strucutres in here
 
   (let [xs (range 7)]
@@ -41,8 +44,8 @@
 
   (let [xs (range 7)]
     (clerk/with-viewer clerk.viewer/map-viewer
-     {:xs xs
-      :xs-squared (map #(* % %) xs)}))
+      {:xs xs
+       :xs-squared (map #(* % %) xs)}))
 
   [:br]
 

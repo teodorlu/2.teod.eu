@@ -6,13 +6,17 @@
    [nextjournal.clerk :as clerk]
    [nextjournal.clerk.viewer :as clerk.viewer]))
 
-;; define stuff here
+(comment
+  ;; define stuff here
+  )
 
 (clerk/table [[1 2]
               [3 4]
               [5 6]])
 
-;; finally, render html
+(comment
+  ;; finally, render html
+  )
 
 {::clerk/visibility {:result :show}}
 ^{::clerk/width :full}

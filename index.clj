@@ -3,11 +3,16 @@
    :nextjournal.clerk/open-graph
    {:url "https://2.teod.eu"}}
   (:require
-   [nextjournal.clerk :as clerk]))
+   [nextjournal.clerk :as clerk]
+   [nextjournal.clerk.viewer :as clerk.viewer]))
+
+;; define stuff here
 
 (clerk/table [[1 2]
               [3 4]
               [5 6]])
+
+;; finally, render html
 
 {::clerk/visibility {:result :show}}
 ^{::clerk/width :full}
@@ -22,4 +27,24 @@
 }
 "}}]
   [:h1 "hi"]
-  [:p "hi hi "]])
+  [:p "hi hi "]
+  ;; we can still rely on Clerk data strucutres in here
+
+  (let [xs (range 7)]
+    (clerk/table
+     {:xs xs
+      :xs-squared (map #(* % %) xs)}))
+
+  (let [xs (range 7)]
+    (clerk/with-viewer clerk.viewer/map-viewer
+     {:xs xs
+      :xs-squared (map #(* % %) xs)}))
+
+  [:br]
+
+  (let [xs (range 7)]
+    (clerk/with-viewer clerk.viewer/fallback-viewer
+      {:xs xs
+       :xs-squared (map #(* % %) xs)}))
+  ]
+ )

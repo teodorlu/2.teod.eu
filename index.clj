@@ -1,7 +1,8 @@
 (ns index
   {:nextjournal.clerk/visibility {:code :hide :result :hide}
    :nextjournal.clerk/open-graph
-   {:url "https://2.teod.eu"}}
+   {:url "https://2.teod.eu"
+    :title "teod.eu"}}
   (:require
    [nextjournal.clerk :as clerk]
    [nextjournal.clerk.viewer :as clerk.viewer]))
@@ -18,6 +19,12 @@
   ;; finally, render html
   )
 
+(defn h1 [& children]
+  (into [:h1.font-arial children]))
+
+(defn p [& children]
+  (into [:p.font-arial] children))
+
 {::clerk/visibility {:result :show}}
 ^{::clerk/width :full}
 (clerk/html
@@ -33,15 +40,7 @@
   font-family: Arial, sans-serif;
 }
 "}}]
-  [:h1.font-arial "hi"]
-  [:p.font-arial "hi hi "]
-  ;; we can still rely on Clerk data strucutres in here
-
-
-
-
-
-
-
+  (h1 "hi")
+  (p "hi hi ")
   ]
  )

@@ -1,2 +1,2 @@
 all:
-	./build-then-deploy.sh &
+	bash -c "./build-then-deploy.sh &"

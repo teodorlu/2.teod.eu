@@ -37,21 +37,11 @@
   [:p.font-arial "hi hi "]
   ;; we can still rely on Clerk data strucutres in here
 
-  (let [xs (range 7)]
-    (clerk/table
-     {:xs xs
-      :xs-squared (map #(* % %) xs)}))
 
-  (let [xs (range 7)]
-    (clerk/with-viewer clerk.viewer/map-viewer
-      {:xs xs
-       :xs-squared (map #(* % %) xs)}))
 
-  [:br]
 
-  (let [xs (range 7)]
-    (clerk/with-viewer clerk.viewer/fallback-viewer
-      {:xs xs
-       :xs-squared (map #(* % %) xs)}))
+
+
+
   ]
  )

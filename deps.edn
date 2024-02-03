@@ -1,0 +1,6 @@
+{:deps {io.github.nextjournal/clerk {:mvn/version "0.15.957"}}
+ :aliases {:dev {:extra-paths ["dev" "."]}
+           :nextjournal/clerk {:exec-fn nextjournal.clerk/build!
+                               :exec-args {:index "index.clj"
+                                           :compile-css true
+                                           :ssr true}}}}

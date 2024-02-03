@@ -1,2 +1,2 @@
 all:
-	clj -X:nextjournal/clerk
+	./build-then-deploy.sh &

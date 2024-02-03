@@ -5,3 +5,5 @@
 3
 
 :hello/world
+
+:trigger/rebuild

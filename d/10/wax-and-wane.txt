@@ -36,7 +36,7 @@ Push it off to where you cannot see it.
 You don't need the reigns of the past to limit you where you're going!
 Without touch and attention, it will calcify. Loose its softness.
 But pray hope that you do not have to touch it again.
-For as the warmth of your feet warm it back up, your nose viscerally understands it for the crap that it is.
+For as the touch of your feet warm it back up, your nose viscerally understands it for the crap that it is.
 
 
 This text was conceived on a walk.
@@ -44,7 +44,7 @@ That walk was a reaction.
 I was messing around with the seed of a game, having had good help from a language model getting off the ground.
 Wanting to extend my little game to show the text on signs, and signify that signs can be read, I looked into the code, wondering what I'd make.
 The code was repulsive.
-The module splits I'd made a while ago had gotten trodden down, and coupling followed.
+The module splits I made three days back had gotten trodden down, and coupling followed.
 So, clean it up, right?
 I wasn't in the mind for that, so I took my head outside.
 

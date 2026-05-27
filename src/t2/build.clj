@@ -7,16 +7,20 @@
 (defn render-pre [txt]
   (str "<!DOCTYPE html>\n"
        (h/html
-        (h/head "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />")
+        (h/head "<meta charset=\"utf-8\" />"
+                "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />"
+                "\n")
         (h/body (h/pre txt)))))
 
 (defn wrap [html-str]
   (str "<!DOCTYPE html>\n"
        (h/html
-        (h/head "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />"
+        (h/head "<meta charset=\"utf-8\" />"
+                "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />"
                 "<style>
 p { font-family: monospace; margin: 1lh 0; }
-</style>")
+</style>"
+                "\n")
         (h/body html-str))))
 
 (def dottxt->dothtml #(str/replace % #".txt$" ".html"))

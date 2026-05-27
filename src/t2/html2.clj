@@ -12,7 +12,7 @@
     (.append sb (:text ir))
 
     :paragraph
-    (do (.append sb "<p>")
+    (do (.append sb "\n<p>")
         (run! (partial render* sb) (:content ir))
         (.append sb "</p>"))
 

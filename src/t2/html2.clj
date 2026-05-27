@@ -12,14 +12,21 @@
     (.append sb (:text ir))
 
     :paragraph
-    (do
-      (.append sb "<p>")
-      (run! (partial render* sb) (:content ir))
-      (.append sb "</p>"))
+    (do (.append sb "<p>")
+        (run! (partial render* sb) (:content ir))
+        (.append sb "</p>"))
 
     :fragment
     (run! (partial render* sb)
-          (:content ir)))
+          (:content ir))
+
+    :ilink
+    (doto sb
+      (.append "<a href=\"")
+      (.append (:target ir))
+      (.append "\">")
+      (.append (:target ir))
+      (.append "</a>")))
   sb)
 
 (defn render [ir]
@@ -30,7 +37,11 @@
   (render
    {:type :fragment
     :content [{:type :paragraph :content [{:type :text :text "YO"}]}
-              {:type :paragraph :content [{:type :text :text "d/10/wax-and-wane"}]}]})
+              {:type :paragraph :content [{:type :text :text "WAX AND WANE"}]}]})
   ;; => "<p>YO</p><p>d/10/wax-and-wane</p>"
+
+  (render
+   {:type :ilink :target "/d/10/wax-and-wane.html"})
+  ;; => "<a href=\"/d/10/wax-and-wane.html\">/d/10/wax-and-wane.html</a>"
 
   )

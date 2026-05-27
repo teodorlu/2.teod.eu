@@ -19,8 +19,8 @@
              (->> sources
                   (map (fn [s]
                          {:type :paragraph
-                          :content [{:type :text
-                                     :text (dottxt->slug s)}]}))))}
+                          :content [{:type :ilink
+                                     :target (dottxt->dothtml s)}]}))))}
       h2/render))
 
 (defn build [sources]

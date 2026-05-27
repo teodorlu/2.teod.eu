@@ -10,6 +10,15 @@
         (h/head "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />")
         (h/body (h/pre txt)))))
 
+(defn wrap [html-str]
+  (str "<!DOCTYPE html>\n"
+       (h/html
+        (h/head "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />"
+                "<style>
+p { font-family: monospace; margin: 1lh 0; }
+</style>")
+        (h/body html-str))))
+
 (def dottxt->dothtml #(str/replace % #".txt$" ".html"))
 (def dottxt->slug #(str/replace % #".txt$" ""))
 
@@ -26,14 +35,14 @@
       h2/render))
 
 (defn build [sources]
-  (spit "index.html" (render-pre (index sources)))
+  (spit "index.html" (wrap (index sources)))
   (doseq [s sources]
     (spit (dottxt->dothtml s)
           (render-pre (slurp s)))))
 
 (comment
 
-  (spit "index.html" (render-pre (index the-sources)))
+  (spit "index.html" (wrap (index the-sources)))
 
   )
 

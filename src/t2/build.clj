@@ -1,5 +1,6 @@
 (ns t2.build
   (:require [t2.html :as h]
+            [t2.html2 :as h2]
             [clojure.string :as str]
             [babashka.fs :as fs]))
 
@@ -11,13 +12,16 @@
 (def dottxt->slug #(str/replace % #".txt$" ""))
 
 (defn index [sources]
-  (str
-   "YO
-
-READ STUFF:\n"
-   (->> sources
-        (map #(str "  " (dottxt->slug %)))
-        (str/join "\n"))))
+  (-> {:type :fragment
+       :content
+       (into [{:type :paragraph
+               :content [{:type :text :text "YO"}]}]
+             (->> sources
+                  (map (fn [s]
+                         {:type :paragraph
+                          :content [{:type :text
+                                     :text (dottxt->slug s)}]}))))}
+      h2/render))
 
 (defn build [sources]
   (spit "index.html" (render-pre (index sources)))

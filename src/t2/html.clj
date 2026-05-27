@@ -5,8 +5,10 @@
 (def open #(str "<" % ">"))
 (def close #(str "</" % ">"))
 
-(defn el [tag & children] (str (open tag) (str/join "\n" children) (close tag)))
+(defn el [tag]
+  (fn [& children]
+    (str (open tag) (str/join "\n" children) (close tag))))
 
-(def html (partial el "html"))
-(def body (partial el "body"))
-(def pre (partial el "pre"))
+(def html (el "html"))
+(def body (el "body"))
+(def pre (el "pre"))

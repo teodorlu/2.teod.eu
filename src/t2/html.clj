@@ -10,5 +10,6 @@
     (str (open tag) (str/join "\n" children) (close tag))))
 
 (def html (el "html"))
+(def head (el "head"))
 (def body (el "body"))
 (def pre (el "pre"))

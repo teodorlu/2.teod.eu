@@ -6,7 +6,9 @@
 
 (defn render-pre [txt]
   (str "<!DOCTYPE html>\n"
-       (h/html (h/body (h/pre txt)))))
+       (h/html
+        (h/head "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />")
+        (h/body (h/pre txt)))))
 
 (def dottxt->dothtml #(str/replace % #".txt$" ".html"))
 (def dottxt->slug #(str/replace % #".txt$" ""))

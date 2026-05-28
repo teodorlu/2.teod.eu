@@ -1,16 +1,9 @@
 (ns t2.build
   (:require [t2.html :as h]
             [t2.html2 :as h2]
+            [t2.ttext]
             [clojure.string :as str]
             [babashka.fs :as fs]))
-
-(defn render-pre [ttext]
-  (str "<!DOCTYPE html>\n"
-       (h/html
-        (h/head "<meta charset=\"utf-8\" />"
-                "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />"
-                "\n")
-        (h/body (h/pre ttext)))))
 
 (defn wrap [html-str]
   (str "<!DOCTYPE html>\n"
@@ -24,7 +17,6 @@ p { font-family: monospace; margin: 1lh 0; }
         (h/body html-str))))
 
 (def dot-ttext->dot-html #(str/replace % #".ttext$" ".html"))
-(def dot-ttext->slug #(str/replace % #".ttext$" ""))
 
 (defn index [sources]
   (-> {:type :fragment
@@ -42,7 +34,7 @@ p { font-family: monospace; margin: 1lh 0; }
   (spit "index.html" (wrap (index sources)))
   (doseq [s sources]
     (spit (dot-ttext->dot-html s)
-          (render-pre (slurp s)))))
+          (-> s slurp t2.ttext/parse t2.html2/render wrap))))
 
 (comment
 

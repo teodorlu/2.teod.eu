@@ -26,7 +26,18 @@
       (.append (:target ir))
       (.append "\">")
       (.append (:target ir))
-      (.append "</a>")))
+      (.append "</a>"))
+
+    :separator
+    (.append sb "<div style=\"height: 1px\"></div>")
+
+    :strong
+    (do (.append sb "<strong>")
+        (run! (partial render* sb) (:content ir))
+        (.append sb "</strong>"))
+
+    :softbreak
+    (.append sb " "))
   sb)
 
 (defn render [ir]

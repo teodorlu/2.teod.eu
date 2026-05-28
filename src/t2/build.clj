@@ -4,13 +4,13 @@
             [clojure.string :as str]
             [babashka.fs :as fs]))
 
-(defn render-pre [txt]
+(defn render-pre [ttext]
   (str "<!DOCTYPE html>\n"
        (h/html
         (h/head "<meta charset=\"utf-8\" />"
                 "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />"
                 "\n")
-        (h/body (h/pre txt)))))
+        (h/body (h/pre ttext)))))
 
 (defn wrap [html-str]
   (str "<!DOCTYPE html>\n"
@@ -23,8 +23,8 @@ p { font-family: monospace; margin: 1lh 0; }
                 "\n")
         (h/body html-str))))
 
-(def dottxt->dothtml #(str/replace % #".txt$" ".html"))
-(def dottxt->slug #(str/replace % #".txt$" ""))
+(def dot-ttext->dot-html #(str/replace % #".ttext$" ".html"))
+(def dot-ttext->slug #(str/replace % #".ttext$" ""))
 
 (defn index [sources]
   (-> {:type :fragment
@@ -35,13 +35,13 @@ p { font-family: monospace; margin: 1lh 0; }
                   (map (fn [s]
                          {:type :paragraph
                           :content [{:type :ilink
-                                     :target (dottxt->dothtml s)}]}))))}
+                                     :target (dot-ttext->dot-html s)}]}))))}
       h2/render))
 
 (defn build [sources]
   (spit "index.html" (wrap (index sources)))
   (doseq [s sources]
-    (spit (dottxt->dothtml s)
+    (spit (dot-ttext->dot-html s)
           (render-pre (slurp s)))))
 
 (comment
@@ -51,10 +51,10 @@ p { font-family: monospace; margin: 1lh 0; }
   )
 
 (defn clean [sources]
-  (run! fs/delete-if-exists (map dottxt->dothtml sources)))
+  (run! fs/delete-if-exists (map dot-ttext->dot-html sources)))
 
 (def the-sources
-  (sorted-set "d/10/wax-and-wane.txt"))
+  (sorted-set "d/10/wax-and-wane.ttext"))
 
 (comment
   (build the-sources)

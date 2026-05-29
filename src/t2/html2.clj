@@ -16,6 +16,11 @@
         (run! (partial render* sb) (:content ir))
         (.append sb "</p>"))
 
+    :blockquote
+    (do (.append sb "\n<blockquote><p>")
+        (run! (partial render* sb) (:content ir))
+        (.append sb "</p></blockquote>"))
+
     :fragment
     (run! (partial render* sb)
           (:content ir))
@@ -46,7 +51,7 @@
   sb)
 
 (defn render [ir]
-  (str (doto (StringBuilder.) (render* ir))))
+  (str (doto (StringBuilder.) (render* ir)) "\n"))
 
 (comment
 

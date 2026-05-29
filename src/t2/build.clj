@@ -14,7 +14,8 @@
 p { font-family: monospace; margin: 1lh 0; }
 </style>"
                 "\n")
-        (h/body html-str))))
+        (h/body html-str))
+       "\n"))
 
 (def dot-ttext->dot-html #(str/replace % #".ttext$" ".html"))
 

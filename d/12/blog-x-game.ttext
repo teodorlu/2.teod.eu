@@ -1,0 +1,24 @@
+Blog engine, meet game engine: because why the hell not
+
+
+Text files last.
+A game engine is a great thing to write.
+
+Rendering your blog as hypertext is easy for you and nice for your readers.
+Open URL, read.
+No yucky extra steps.
+
+Plain HTML, however, is not how you'll make a game engine.
+In game engines, you accept and work with the tyranny of the clock: the render.
+You shall deliver content to the user every frame.
+And you shall not slow down the screen's refresh rate in delivering such frames.
+Most people will be happy if you can deliver 120 FPS.
+
+Browsers deliver 120 FPS _for you_ when you scroll around on a website.
+But what if you want a player moving?
+What if you want physics?
+What if you want render effects?
+
+Two paradigms for user interfaces arise.
+One in which you deliver a tree of components, of which some are hypermedia controls, to a hypermedia client.
+One in which you deliver every frame.

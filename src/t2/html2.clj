@@ -36,6 +36,11 @@
         (run! (partial render* sb) (:content ir))
         (.append sb "</strong>"))
 
+    :em
+    (do (.append sb "<em>")
+        (run! (partial render* sb) (:content ir))
+        (.append sb "</em>"))
+
     :softbreak
     (.append sb " "))
   sb)

@@ -46,7 +46,7 @@ p { font-family: monospace; margin: 1lh 0; }
   (run! fs/delete-if-exists (map dot-ttext->dot-html sources)))
 
 (def the-sources
-  (sorted-set "d/10/wax-and-wane.ttext"))
+  (sorted-set "d/10/wax-and-wane.ttext" "d/11/compact-core.ttext"))
 
 (comment
   (build the-sources)

@@ -1,3 +1,4 @@
-{:paths ["src"]
+{:paths ["src" "text"]
  :deps {babashka/fs {:mvn/version "0.5.33"}
-        io.github.nextjournal/markdown {:mvn/version "0.7.225"}}}
+        io.github.nextjournal/markdown {:mvn/version "0.7.225"}
+        lambdaisland/kaocha {:mvn/version "1.91.1392"}}}

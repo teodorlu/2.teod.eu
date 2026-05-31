@@ -26,12 +26,15 @@
           (:content ir))
 
     :ilink
-    (doto sb
-      (.append "<a href=\"")
-      (.append (:target ir))
-      (.append "\">")
-      (.append (:target ir))
-      (.append "</a>"))
+    (do
+      (doto sb
+        (.append "<a href=\"")
+        (.append (:target ir))
+        (.append "\">"))
+      (if (:content ir)
+        (run! (partial render* sb) (:content ir))
+        (.append sb (:target ir)))
+      (.append sb "</a>"))
 
     :separator
     (.append sb "<div style=\"height: 1px\"></div>")

@@ -37,17 +37,13 @@ p { font-family: monospace; margin: 1lh 0; }
     (spit (dot-ttext->dot-html s)
           (-> s slurp t2.ttext/parse t2.html2/render wrap))))
 
-(comment
-
-  (spit "index.html" (wrap (index the-sources)))
-
-  )
-
 (defn clean [sources]
   (run! fs/delete-if-exists (map dot-ttext->dot-html sources)))
 
 (def the-sources
-  (sorted-set "d/10/wax-and-wane.ttext" "d/11/compact-core.ttext"))
+  (sorted-set "d/10/wax-and-wane.ttext"
+              "d/11/compact-core.ttext"
+              "d/12/hypermedia-x-game.ttext"))
 
 (comment
   (build the-sources)

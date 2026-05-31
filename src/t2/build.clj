@@ -35,7 +35,14 @@ p { font-family: monospace; margin: 1lh 0; }
   (spit "index.html" (wrap (index sources)))
   (doseq [s sources]
     (spit (dot-ttext->dot-html s)
-          (-> s slurp t2.ttext/parse t2.html2/render wrap))))
+          (-> {:type :fragment
+               :content [{:type :ilink
+                          :target "/"
+                          :content [{:type :text
+                                     :text "↰"}]}
+                         (-> s slurp t2.ttext/parse)]}
+
+              t2.html2/render wrap))))
 
 (defn clean [sources]
   (run! fs/delete-if-exists (map dot-ttext->dot-html sources)))

@@ -62,10 +62,10 @@
    {:type :fragment
     :content [{:type :paragraph :content [{:type :text :text "YO"}]}
               {:type :paragraph :content [{:type :text :text "WAX AND WANE"}]}]})
-  ;; => "<p>YO</p><p>d/10/wax-and-wane</p>"
+  ;; => "\n<p>YO</p>\n<p>WAX AND WANE</p>\n"
 
   (render
    {:type :ilink :target "/d/10/wax-and-wane.html"})
-  ;; => "<a href=\"/d/10/wax-and-wane.html\">/d/10/wax-and-wane.html</a>"
+  ;; => "<a href=\"/d/10/wax-and-wane.html\">/d/10/wax-and-wane.html</a>\n"
 
   )

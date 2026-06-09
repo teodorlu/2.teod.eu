@@ -17,7 +17,10 @@ p { font-family: monospace; margin: 1lh 0; }
         (h/body html-str))
        "\n"))
 
-(def dot-ttext->dot-html #(str/replace % #".ttext$" ".html"))
+(defn dot-ttext->dot-html [s]
+  (-> s
+      (str/replace #".ttext$" ".html")
+      (str/replace #".ttex$" ".html")))
 
 (defn index [sources]
   (-> {:type :fragment
@@ -50,7 +53,9 @@ p { font-family: monospace; margin: 1lh 0; }
 (def the-sources
   (sorted-set "d/10/wax-and-wane.ttext"
               "d/11/compact-core.ttext"
-              "d/12/hypermedia-x-game.ttext"))
+              "d/12/hypermedia-x-game.ttext"
+              ;; TODO "d/13/syntax-obsessed.ttex"
+              ))
 
 (comment
   (build the-sources)

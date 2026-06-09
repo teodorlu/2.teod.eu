@@ -1,0 +1,37 @@
+Syntax obsessed
+
+Everyone disagrees on how we programmers should denote the programs we write in text.
+That's cute, and it's cursed.
+Our fragmentation prevents us from speaking the same language and building a shared foundation.
+In maths, physics and engineering disciplines such as civil and mechanical, they chose their notation and stuck with it.
+
+I, too, suffer from this.
+How should I denote my text?
+For code, I can just choose a programming language I like and lean on its tooling.
+But for my own stuff?
+
+For my own stuff, I can choose to ignore.
+\external{Artyom Bologov} argues \external{Against Markdown}, \external{For HTML}.
+
+But HTML and Markdown are just different syntaxes.
+Why should those be any better?
+I can learn by exploring the design space.
+
+I created a Clojure namespace.
+I split my text by paragraphs.
+Then I figured, I need test data.
+Then I figured, why not write my test data in my proposed format.
+So here we are.
+Yet another syntax, this one inspired by tex.
+
+Is it any better?
+Writing it out, I want my primitives back.
+I want UI stronger than plain text.
+Am I supposed to maintain this external link registry by hand?
+Not likely.
+
+\registry{
+  \target[Artyom Bologov]{https://aartaka.me/about.html}
+  \target[For HTML]{https://aartaka.me/pidgin.html}
+  \target[Against Markdown]{https://aartaka.me/markdown.html}
+}

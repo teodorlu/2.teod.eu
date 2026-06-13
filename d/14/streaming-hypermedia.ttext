@@ -9,3 +9,7 @@ HTML over HTTP via Content-Type: text/html lets you show the user interface *onc
 When the underlying data changes, an exceptional case is hit.
 HTML over HTTP via Content-Type: text/event-stream lets you stream updates.
 Your hypermedia client can reflect current state.
+
+A better term is maybe *live hypermedia*.
+The interface is live, not stale.
+That live interface may be implemented with streaming.

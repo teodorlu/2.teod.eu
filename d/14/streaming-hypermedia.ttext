@@ -1,0 +1,11 @@
+Streaming hypermedia
+
+
+Hypermedia is to structure your user interface through media types and hypermedia controls.
+The media type is something the hypermedia client can show.
+The hypermedia control is something the user can do in the hypermedia client.
+
+HTML over HTTP via Content-Type: text/html lets you show the user interface *once*.
+When the underlying data changes, an exceptional case is hit.
+HTML over HTTP via Content-Type: text/event-stream lets you stream updates.
+Your hypermedia client can reflect current state.

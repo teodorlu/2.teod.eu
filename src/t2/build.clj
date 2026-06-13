@@ -55,6 +55,7 @@ p { font-family: monospace; margin: 1lh 0; }
               "d/11/compact-core.ttext"
               "d/12/hypermedia-x-game.ttext"
               ;; TODO "d/13/syntax-obsessed.ttex"
+              "d/14/streaming-hypermedia.ttext"
               ))
 
 (comment

@@ -1,9 +1,9 @@
 (ns t2.build
-  (:require [t2.html :as h]
-            [t2.html2 :as h2]
-            [t2.ttext]
+  (:require [babashka.fs :as fs]
             [clojure.string :as str]
-            [babashka.fs :as fs]))
+            [t2.html :as h]
+            [t2.html2 :as h2]
+            [t2.ttext]))
 
 (defn wrap [html-str]
   (str "<!DOCTYPE html>\n"
@@ -50,13 +50,10 @@ p { font-family: monospace; margin: 1lh 0; }
 (defn clean [sources]
   (run! fs/delete-if-exists (map dot-ttext->dot-html sources)))
 
-(def the-sources
-  (sorted-set "d/10/wax-and-wane.ttext"
-              "d/11/compact-core.ttext"
-              "d/12/hypermedia-x-game.ttext"
-              ;; TODO "d/13/syntax-obsessed.ttex"
-              "d/14/streaming-hypermedia.ttext"
-              ))
+(defn find-sources []
+  (into (sorted-set) (map str) (fs/glob "d" "**/*.ttext")))
+
+(def the-sources (find-sources))
 
 (comment
   (build the-sources)

@@ -1,6 +1,7 @@
 (ns t2.build
   (:require [babashka.fs :as fs]
             [clojure.string :as str]
+            [t2.d :as d]
             [t2.html :as h]
             [t2.html2 :as h2]
             [t2.ttext]))

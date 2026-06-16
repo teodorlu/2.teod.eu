@@ -1,6 +1,7 @@
 (ns t2.ttext
   (:require [clojure.string :as str]
-            [nextjournal.markdown]))
+            [nextjournal.markdown]
+            [t2.d :as d]))
 
 (def parse-paragraph
   (comp first :content nextjournal.markdown/parse))
@@ -20,12 +21,9 @@
                  (parse-paragraph x)))))})
 
 (comment
-  (-> (slurp "d/10/wax-and-wane.ttext")
-      parse)
+  (parse (d/load "10"))
 
   (require 't2.html2)
-  (-> (slurp "d/10/wax-and-wane.ttext")
-      parse
-      t2.html2/render)
-
+  (-> "10" d/load parse t2.html2/render)
+  (-> "15" d/load parse t2.html2/render)
   )

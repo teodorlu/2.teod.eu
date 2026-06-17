@@ -5,18 +5,14 @@
 
 (def root "d")
 (def one #(when (= 1 (count %)) (first %)))
-(def find #(some-> (fs/path root %) (fs/glob "*.ttext") one fs/file))
+(defn find [id]
+  (some-> (fs/path root id) (fs/glob "*.ttext") one fs/file))
 
 (def load #(some-> % find slurp))
 
 (defn load+ [id]
   (when-let [f (find id)]
     [id (slurp f)]))
-
-(->> (fs/list-dir root)
-     (map fs/file-name)
-     (filter find)
-     )
 
 (defn all []
   (into (sorted-set)

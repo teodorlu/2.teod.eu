@@ -1,6 +1,7 @@
 (ns t2.build
   (:require [babashka.fs :as fs]
             [clojure.string :as str]
+            [t2.d :as d]
             [t2.html :as h]
             [t2.html2 :as h2]
             [t2.ttext]))
@@ -50,10 +51,13 @@ p { font-family: monospace; margin: 1lh 0; }
 (defn clean [sources]
   (run! fs/delete-if-exists (map dot-ttext->dot-html sources)))
 
-(defn find-sources []
-  (into (sorted-set) (map str) (fs/glob "d" "**/*.ttext")))
+(def drafts #{"17"})
 
-(def the-sources (find-sources))
+(def the-sources
+  (into (sorted-set)
+        (comp (remove drafts)
+              (map (comp str d/find)))
+        (d/all)))
 
 (comment
   (build the-sources)

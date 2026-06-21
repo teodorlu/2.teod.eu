@@ -36,6 +36,16 @@
         (.append sb (:target ir)))
       (.append sb "</a>"))
 
+    :link
+    (do
+      (assert (get-in ir [:attrs :href]))
+      (doto sb
+        (.append "<a href=\"")
+        (.append (get-in ir [:attrs :href]))
+        (.append "\">"))
+      (run! (partial render* sb) (:content ir))
+      (.append sb "</a>"))
+
     :separator
     (.append sb "<div style=\"height: 1px\"></div>")
 

@@ -3,19 +3,18 @@ Literature study != drafting != editing
 Most texts on this site so far have been written in a single pass, and published within half an hour after writing started.
 This works well when I can keep the topic narrow and the text short.
 I just broke that rule.
-I started writing about how I work differently with theory than with code hours ago, and I don't have a complete first draft yet.
+I started writing about how I work differently with theory than with code, and hours later I don't still have a complete first draft.
 What went sideways?
 In the middle of the first draft, I jumped to literature study.
 I bet I can find nice references for this one!
 I know Rich Hickey discussed something like this at one point!
 
-The idea to expand one FIND-REFERENCE inline note in my text into an actual reference plummeted into looking at related stuff.
+The idea to expand one inline note that I'd read something similar once to a real reference plummeted into exploring related texts.
 Then I found out I didn't refer to transcripts from [play.teod.eu/simple-made-easy](https://play.teod.eu/simple-made-easy).
 Then I found out some of the Rich Hickey references had years, but others were missing!
 
 Clearly separating the process of writing the complete first draft from editing the text has been super helpful to me.
-So helpful I now do it every time.
-I even made a [small app](https://play.teod.eu/knus-skrivesperren) to force me to do it (saving drafts in localstorage afterwards).
+I write most my blog-style texts this way.
 
 Today's conclusion?
 I want similar process separation for literature study.

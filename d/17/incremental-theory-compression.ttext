@@ -1,0 +1,17 @@
+Incremental theory compression
+
+Implementation and explanation have different goals.
+An ideal implementation is non-reducible and efficient.
+It cannot be reduced to a simpler implementation, and it does its work without too much overhead.
+The implementation is the reduced, final state.
+
+Theory is different.
+A great theory explains well.
+When I learn computerly things, I have stumbled upon a pattern of repeated copy/compress/expand cycles.
+I write out some code that does the thing.
+I copy it, compress the non-interesting parts, and expand the implementation to do new things.
+Done well, each cycle improves my theory of the thing I'm explaining.
+
+Want more?
+Read [Semantic Compression](https://caseymuratori.com/blog_0015) by Casey Muratori.
+He applies the theory compression to the code in order to improve it.

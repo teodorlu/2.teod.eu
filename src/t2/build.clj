@@ -51,7 +51,7 @@ p { font-family: monospace; margin: 1lh 0; }
 (defn clean [sources]
   (run! fs/delete-if-exists (map dot-ttext->dot-html sources)))
 
-(def drafts #{"17"})
+(def drafts #{})
 
 (def the-sources
   (into (sorted-set)
@@ -60,7 +60,20 @@ p { font-family: monospace; margin: 1lh 0; }
         (d/all)))
 
 (comment
+  (set! *print-namespace-maps* false)
+
+  ;; build
   (build the-sources)
   (clean the-sources)
+
+  ;; d/...
+  (def all (d/all))
+  (d/find (first all))
+  (-> all last d/find slurp t2.ttext/parse)
+
+  ;; render
+  (t2.html2/render {:type :link,
+                    :attrs {:href "https://play.teod.eu/simple-made-easy"},
+                    :content [{:type :text, :text "play.teod.eu/simple-made-easy"}]})
 
   )

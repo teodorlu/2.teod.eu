@@ -1,6 +1,6 @@
 (ns t2.d
   "document operations"
-  (:refer-clojure :exclude [load find])
+  (:refer-clojure :exclude [load find next])
   (:require [babashka.fs :as fs]))
 
 (def root "d")
@@ -20,9 +20,13 @@
               (filter find))
         (fs/list-dir root)))
 
+(def next #(-> % (Long/parseLong 16) inc (Long/toString 16)))
+
 (comment
   (all)
   (find "10")
   (load "10")
   (load+ "10")
+
+  (next "19")
   )

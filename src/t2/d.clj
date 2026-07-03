@@ -29,4 +29,10 @@
   (load+ "10")
 
   (next "19")
+
+  ;; Finn slugs/filnavn
+  (into (sorted-set)
+        (map (comp fs/file-name find))
+        (all))
+
   )

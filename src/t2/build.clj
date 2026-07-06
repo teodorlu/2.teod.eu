@@ -80,6 +80,7 @@ p { font-family: monospace; margin: 1lh 0; }
   (spit "jtk/01/julian-og-teodor-konverserer.html"
         (-> (slurp "jtk/01/julian-og-teodor-konverserer.ttext")
             t2.ttext/parse
-            t2.html2/render))
+            t2.html2/render
+            wrap))
 
   )

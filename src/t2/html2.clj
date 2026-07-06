@@ -60,7 +60,12 @@
         (.append sb "</em>"))
 
     :softbreak
-    (.append sb " "))
+    (.append sb " ")
+
+    nil
+    nil
+
+    (throw (ex-info "Unsupported node" ir)))
   sb)
 
 (defn render [ir]

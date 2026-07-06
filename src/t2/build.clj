@@ -76,4 +76,10 @@ p { font-family: monospace; margin: 1lh 0; }
                     :attrs {:href "https://play.teod.eu/simple-made-easy"},
                     :content [{:type :text, :text "play.teod.eu/simple-made-easy"}]})
 
+  ;; jtk
+  (spit "jtk/01/julian-og-teodor-konverserer.html"
+        (-> (slurp "jtk/01/julian-og-teodor-konverserer.ttext")
+            t2.ttext/parse
+            t2.html2/render))
+
   )

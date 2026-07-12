@@ -51,7 +51,7 @@ p { font-family: monospace; margin: 1lh 0; }
 (defn clean [sources]
   (run! fs/delete-if-exists (map dot-ttext->dot-html sources)))
 
-(def drafts #{"19"})
+(def drafts #{"19" "1c"})
 
 (def the-sources
   (into (sorted-set)

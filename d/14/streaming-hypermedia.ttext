@@ -1,6 +1,5 @@
 Streaming hypermedia
 
-
 Hypermedia is to structure your user interface through media types and hypermedia controls.
 The media type is something the hypermedia client can show.
 The hypermedia control is something the user can do in the hypermedia client.

@@ -83,4 +83,10 @@ p { font-family: monospace; margin: 1lh 0; }
             t2.html2/render
             wrap))
 
+  (spit "jtk/02/2.html"
+        (-> (slurp "jtk/02/2.ttext")
+            t2.ttext/parse
+            t2.html2/render
+            wrap))
+
   )

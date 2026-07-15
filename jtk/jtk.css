@@ -1,0 +1,25 @@
+p { font-family: monospace; margin: 1lh 0; }
+
+main { max-width: 72rem; }
+
+article {
+  display: grid;
+  grid-template-columns: minmax(9rem, 1fr) minmax(0, 1.618fr);
+  gap: 0 2rem;
+  margin: 2lh 0;
+}
+
+article > header { text-align: right; }
+article > header strong,
+article > header span {
+  display: block;
+  font-family: monospace;
+  margin: 0.5lh 0;
+}
+article > header strong { margin-top: 0; }
+article > section p:first-child { margin-top: 0; }
+
+@media (max-width: 42rem) {
+  article { display: block; }
+  article > header { text-align: left; }
+}

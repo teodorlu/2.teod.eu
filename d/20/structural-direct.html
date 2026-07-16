@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<style>
+p { font-family: monospace; margin: 1lh 0; }
+</style>
+
+</head>
+<body><p><a href="/">↰</a></p>
+<style>
+  two-indented {
+      display: block;
+      margin-left: 1rem;
+  }
+
+  body {
+    margin-left: 0;
+    margin-right: 0;
+  }
+  
+  body > p {
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+  }
+</style>
+<link rel="stylesheet" type="text/css" href="./system.css">
+<link rel="stylesheet" type="text/css" href="./jsc.css">
+
+<p>
+  Structural and direct?
+
+<p>
+  Lispers like to work on structural expressions, so called s-expressions.
+  Writers need a low-friction writing surface.
+  Write, and you've got text on screen or paper.
+  Nonlinear writers may follow in the shoes of Ted Nelson and declare themselves unsatisfied
+    with the shackles of single-directed texts.
+  <two-indented>
+    Where is banching?<br />
+    Why am I limited to this single, pre-defined media type of typeset letters?
+  </two-indented>
+  Could an editor accomodate both?
+</p>
+
+<jsc-demo>
+  <jsc-edit>
+    <jsc-box data-color="teal"></jsc-box>
+    <jsc-box data-color="crimson"></jsc-box>
+    <jsc-box data-color="aquamarine" data-cursor="before"></jsc-box>
+    <jsc-box data-color="teal"></jsc-box>
+    <jsc-box data-color="crimson"></jsc-box>
+  </jsc-edit>
+  <small>Five blocks and a cursor</small>
+  <br>
+  <button role="bind-keymap">Bind keys</button>
+  <button role="unbind-keymap">Release</button>
+  <jsc-keymap>
+    <jsc-bind key="C-M-b" command="backwardSexp"></jsc-bind>
+    <jsc-bind key="C-M-f" command="forwardSexp"></jsc-bind>
+    <jsc-bind key="C-k" command="deleteToEnd"></jsc-bind>
+  </jsc-keymap>
+</jsc-demo>
+</body></html>

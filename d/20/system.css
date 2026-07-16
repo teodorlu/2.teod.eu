@@ -1,0 +1,31 @@
+@font-face {
+  font-family: "App Nunito";
+  src: url("fonts/nunito-latin.woff2") format("woff2");
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "App Cormorant";
+  src: url("fonts/cormorant-latin.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --font-main: "App Nunito", sans-serif;
+  --font-main-weight: 400;
+  --font-main-tracking: -0.04em;
+
+  --font-heading: "App Cormorant", serif;
+  --font-heading-weight: 400;
+  --font-heading-tracking: 0;
+
+  --color-front: #f1ffed;
+  --color-back: black;
+  --color-emph: #b2ffed;
+  --color-highlight: #ffca2c;
+}
+

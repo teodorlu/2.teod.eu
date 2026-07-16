@@ -1,0 +1,76 @@
+jsc-demo {
+    color: var(--color-front);
+    background-color: var(--color-back);
+    font-family: var(--font-main);
+    font-weight: var(--font-main-weight);
+    letter-spacing: var(--font-main-tracking);
+    font-size: 16px;
+
+    padding: 1rem;
+    display: block;
+}
+
+jsc-edit {
+    display: flex;
+    gap: 4px;
+}
+
+jsc-box {
+    display: block;
+    min-width: 10px;
+    min-height: 10px;
+}
+
+jsc-box[data-color="teal"] { background-color: teal; }
+jsc-box[data-color="crimson"] { background-color: crimson; }
+jsc-box[data-color="aquamarine"] { background-color: aquamarine; }
+
+jsc-edit > [data-cursor="before"] {
+    box-shadow: inset 2px 0 0 #ffca2c;
+}
+
+jsc-demo button {
+	font-family: var(--font-main);
+	font-weight: var(--font-main-weight);
+	letter-spacing: var(--font-main-tracking);
+	font-size: 0.75rem;
+	color: var(--color-front);
+	background-color: color-mix(in srgb, var(--color-front) 8%, transparent);
+	border: 1px solid color-mix(in srgb, var(--color-emph) 40%, transparent);
+	border-radius: 3px;
+	padding: 1px 2px;
+	cursor: pointer;
+	transition: background-color 150ms ease, border-color 150ms ease, color 150ms ease;
+}
+
+jsc-demo button:hover {
+	color: var(--color-highlight);
+	border-color: var(--color-highlight);
+}
+
+/* Present <jsc-keymap><jsc-bind key="…" command="…"></jsc-bind></jsc-keymap>
+   as a two-column legend, CSS-only (no JS). */
+jsc-keymap {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    gap: 6px 16px;
+    margin-top: 0.5rem;
+}
+
+jsc-bind {
+    display: contents;
+}
+
+jsc-bind::before {
+    content: attr(key);
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.8em;
+    color: color-mix(in srgb, var(--color-front) 55%, transparent);
+    text-align: right;
+}
+
+jsc-bind::after {
+    content: attr(command);
+    font-size: 0.9em;
+    color: color-mix(in srgb, var(--color-front) 38%, transparent);
+}

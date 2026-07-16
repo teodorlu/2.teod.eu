@@ -6,7 +6,7 @@
 (def root "d")
 (def one #(when (= 1 (count %)) (first %)))
 (defn find [id]
-  (some-> (fs/path root id) (fs/glob "*.ttext") one fs/file))
+  (some-> (fs/path root id) (fs/glob "*.{ttext,htm}") one fs/file))
 
 (def load #(some-> % find slurp))
 
@@ -24,11 +24,11 @@
 
 (comment
   (all)
-  (find "10")
+  (find "20")
   (load "10")
-  (load+ "10")
+  (load+ "20")
 
-  (next "19")
+  (-> (all) last next)
 
   ;; Finn slugs/filnavn
   (into (sorted-set)

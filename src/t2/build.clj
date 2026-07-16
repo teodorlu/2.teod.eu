@@ -21,7 +21,8 @@ p { font-family: monospace; margin: 1lh 0; }
 (defn dot-ttext->dot-html [s]
   (-> s
       (str/replace #".ttext$" ".html")
-      (str/replace #".ttex$" ".html")))
+      (str/replace #".ttex$" ".html")
+      (str/replace #".htm$" ".html")))
 
 (defn index [sources]
   (-> {:type :fragment
@@ -35,18 +36,31 @@ p { font-family: monospace; margin: 1lh 0; }
                                      :target (dot-ttext->dot-html s)}]}))))}
       h2/render))
 
+(defn build-ttext [ttext-str]
+  (-> {:type :fragment
+       :content [{:type :ilink
+                  :target "/"
+                  :content [{:type :text
+                             :text "↰"}]}
+                 (t2.ttext/parse ttext-str)]}
+      t2.html2/render wrap))
+
+(defn build-htm [htm-str]
+  (wrap (str "<a href=\"/\">↰</a>\n" htm-str)))
+
+(def ext->build-fn
+  {"ttext" #'build-ttext
+   "htm" #'build-htm})
+
 (defn build [sources]
   (spit "index.html" (wrap (index sources)))
   (doseq [s sources]
     (spit (dot-ttext->dot-html s)
-          (-> {:type :fragment
-               :content [{:type :ilink
-                          :target "/"
-                          :content [{:type :text
-                                     :text "↰"}]}
-                         (-> s slurp t2.ttext/parse)]}
-
-              t2.html2/render wrap))))
+          ((or (ext->build-fn (fs/extension s))
+               (throw (ex-info "unsupported extension"
+                               {:extension (fs/extension s)
+                                :source s})))
+           (slurp s)))))
 
 (defn clean [sources]
   (run! fs/delete-if-exists (map dot-ttext->dot-html sources)))

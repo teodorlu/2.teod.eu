@@ -1,10 +1,12 @@
 (ns t2.build
-  (:require [babashka.fs :as fs]
-            [clojure.string :as str]
-            [t2.d :as d]
-            [t2.html :as h]
-            [t2.html2 :as h2]
-            [t2.ttext]))
+  (:require
+   [babashka.fs :as fs]
+   [clojure.set :as set]
+   [clojure.string :as str]
+   [t2.d :as d]
+   [t2.html :as h]
+   [t2.html2 :as h2]
+   [t2.ttext]))
 
 (defn wrap [html-str]
   (str "<!DOCTYPE html>\n"
@@ -52,33 +54,32 @@ p { font-family: monospace; margin: 1lh 0; }
   {"ttext" #'build-ttext
    "htm" #'build-htm})
 
-(defn build [sources]
-  (spit "index.html" (wrap (index sources)))
-  (doseq [s sources]
-    (spit (dot-ttext->dot-html s)
-          ((or (ext->build-fn (fs/extension s))
-               (throw (ex-info "unsupported extension"
-                               {:extension (fs/extension s)
-                                :source s})))
-           (slurp s)))))
+(defn build [published-ids draft-ids]
+  (let [published (into (sorted-set) (map (comp str d/find)) published-ids)
+        drafts (into (sorted-set) (map (comp str d/find)) draft-ids)]
+    (spit "index.html" (wrap (index published)))
+    (doseq [s (set/union published drafts)]
+      (spit (dot-ttext->dot-html s)
+            ((or (ext->build-fn (fs/extension s))
+                 (throw (ex-info "unsupported extension"
+                                 {:extension (fs/extension s)
+                                  :source s})))
+             (slurp s))))))
 
-(defn clean [sources]
-  (run! fs/delete-if-exists (map dot-ttext->dot-html sources)))
+(defn clean [source-ids]
+  (let [sources (into #{} (map (comp str d/find)) source-ids)]
+    (run! fs/delete-if-exists (map dot-ttext->dot-html sources))))
 
-(def drafts #{"19" "1c" "20"})
-
-(def the-sources
-  (into (sorted-set)
-        (comp (remove drafts)
-              (map (comp str d/find)))
-        (d/all)))
+(def draft-ids #{"19" "1c" "20"})
+(def all-ids (set (d/all)))
+(def published-ids (set/difference all-ids draft-ids))
 
 (comment
   (set! *print-namespace-maps* false)
 
   ;; build
-  (build the-sources)
-  (clean the-sources)
+  (build published-ids draft-ids)
+  (clean all-ids)
 
   ;; d/...
   (def all (d/all))

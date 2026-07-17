@@ -46,7 +46,7 @@ p { font-family: monospace; margin: 1lh 0; }
       t2.html2/render wrap))
 
 (defn build-htm [htm-str]
-  (wrap (str "<a href=\"/\">↰</a>\n" htm-str)))
+  (wrap (str "<p><a href=\"/\">↰</a></p>\n" htm-str)))
 
 (def ext->build-fn
   {"ttext" #'build-ttext

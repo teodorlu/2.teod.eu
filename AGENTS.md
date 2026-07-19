@@ -14,3 +14,12 @@ When the user asks to explain or demonstrate how the web works, create an HTML f
 - `agent-demos/index.html` lists agent-generated communication/demo files only, not application files.
 - Agent demos must live in `agent-demos/` and must not interleave with application code.
 - Agent demos shall include a non-intruse link back up to the agent demos index.
+
+## Clojure REPL discipline
+
+- Use (`nvk`) to evaluate code
+- Invoker connects to a running JVM process. Use this. Do not stop this process; a human is likely using it.
+- Use `nvk reload` to load new code after file changes have been made.
+- Use `nvk test` to run the tests.
+
+You shall never restart JVM processes without asking the user.

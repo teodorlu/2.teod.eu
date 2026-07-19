@@ -1,5 +1,6 @@
 (ns t2.jtk
-  {:llm-generated "2026-07-15"}
+  {:llm-generated "2026-07-15"
+   :tedor-edited "2026-07-19"}
   (:require [babashka.fs :as fs]
             [clojure.string :as str]
             [t2.html2 :as html2]
@@ -7,16 +8,8 @@
 
 (def root "jtk")
 
-(defn entry-file? [path]
-  (and (fs/regular-file? path)
-       (= "ttext" (fs/extension path))))
-
-(defn all []
-  (->> (fs/list-dir root)
-       (filter fs/directory?)
-       (mapcat #(fs/glob % "*.ttext"))
-       (filter entry-file?)
-       sort))
+(def entry-globexpr "[0-9a-f][0-9a-f]*-*.{htm,ttext}")
+(def entry-globexpr-old "[0-9a-f][0-9a-f]*-*.ttext")
 
 (defn parse [s]
   (let [[title date author & body-lines] (str/split-lines s)]
@@ -59,7 +52,7 @@
 
 (defn build []
   (spit (str (fs/path root "index.html"))
-        (->> (all)
+        (->> (fs/glob root entry-globexpr-old)
              (map (comp parse slurp str))
              index
              wrap)))

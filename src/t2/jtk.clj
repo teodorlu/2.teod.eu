@@ -56,6 +56,17 @@
                 [:jtk/title :jtk/date :jtk/author])
         (assoc :content/htm html-str))))
 
+(def ext->parse-fn
+  {"ttext" #'parse-ttext
+   "htm" #'parse-htm})
+
+(defn parse-file [f]
+  (if-let [parse-fn (ext->parse-fn (fs/extension f))]
+    (-> f str slurp parse-fn)
+    (throw (ex-info "unsupported extension"
+                    {:extension (fs/extension f)
+                     :file f}))))
+
 (defn render-entry [entry]
   (str "\n<article>"
        "\n<header>"
@@ -64,7 +75,14 @@
        "\n<span>" (:jtk/author entry) "</span>"
        "\n</header>"
        "\n<section>"
-       (html2/render {:type :fragment :content (:content/nxmd entry)})
+       (cond (:content/nxmd entry)
+             (html2/render {:type :fragment :content (:content/nxmd entry)})
+
+             (:content/htm entry)
+             (:content/htm entry)
+
+             :else
+             (throw (ex-info "No content found for entry" {:entry entry})))
        "</section>"
        "\n</article>"))
 
@@ -85,11 +103,13 @@
 
 (defn build []
   (spit (str (fs/path root "index.html"))
-        (->> (fs/glob root entry-globexpr-old)
-             (map (comp parse-ttext slurp str))
+        (->> (fs/glob root entry-globexpr)
+             sort
+             (map parse-file)
              index
              wrap)))
 
 (comment
   (build)
+
   )

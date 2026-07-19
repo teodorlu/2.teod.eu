@@ -23,3 +23,11 @@ article > section p:first-child { margin-top: 0; }
   article { display: block; }
   article > header { text-align: left; }
 }
+
+jtk-title, jtk-date, jtk-author {
+    display: none;
+}
+
+section > p:first-of-type {
+    margin-top: 0;
+}

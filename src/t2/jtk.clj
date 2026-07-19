@@ -6,9 +6,10 @@
    [clojure.spec.alpha :as s]
    [clojure.string :as str]
    [hickory.core :as hickory]
-   [hickory.select :as select]
    [t2.html2 :as html2]
-   [t2.ttext :as ttext]))
+   [t2.ttext :as ttext])
+  (:import
+   (org.jsoup.nodes Element)))
 
 ;; Nextjournal markdown sequence of AST nodes
 (s/def :content/nxmd seqable?)
@@ -33,14 +34,12 @@
                         (remove str/blank?)
                         (map ttext/parse-paragraph))}))
 
-(defn select-tag-text [hickory tag]
-  (some->> hickory
-           (select/select (select/tag tag))
-           first
-           :content
-           (filter string?)
-           seq
-           str/join))
+(defn select-tag-text
+  [jsoup-root tag]
+  (some-> jsoup-root
+          (Element/.select tag)
+          first
+          Element/.text))
 
 (defn kw->tag [kw]
   (if-let [n (namespace kw)]
@@ -48,9 +47,9 @@
     (name kw)))
 
 (defn parse-htm [html-str]
-  (let [hickory (-> html-str hickory/parse hickory/as-hickory)]
+  (let [jsoup-root (hickory/parse html-str)]
     (-> (reduce (fn [m kw]
-                  (if-let [text (select-tag-text hickory (kw->tag kw))]
+                  (if-let [text (select-tag-text jsoup-root (kw->tag kw))]
                     (assoc m kw text)
                     m))
                 {}

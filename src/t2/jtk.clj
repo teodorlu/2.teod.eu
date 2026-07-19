@@ -56,15 +56,15 @@
                 [:jtk/title :jtk/date :jtk/author])
         (assoc :content/htm html-str))))
 
-(defn render-entry [{:keys [jtk/title jtk/date jtk/author nxmd/nxmd]}]
+(defn render-entry [entry]
   (str "\n<article>"
        "\n<header>"
-       "\n<strong>" title "</strong>"
-       "\n<span>" date "</span>"
-       "\n<span>" author "</span>"
+       "\n<strong>" (:jtk/title entry) "</strong>"
+       "\n<span>" (:jtk/date entry) "</span>"
+       "\n<span>" (:jtk/author entry) "</span>"
        "\n</header>"
        "\n<section>"
-       (html2/render {:type :fragment :content nxmd})
+       (html2/render {:type :fragment :content (:content/nxmd entry)})
        "</section>"
        "\n</article>"))
 

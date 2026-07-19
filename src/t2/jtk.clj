@@ -1,29 +1,63 @@
 (ns t2.jtk
   {:llm-generated "2026-07-15"
    :tedor-edited "2026-07-19"}
-  (:require [babashka.fs :as fs]
-            [clojure.string :as str]
-            [t2.html2 :as html2]
-            [t2.ttext :as ttext]))
+  (:require
+   [babashka.fs :as fs]
+   [clojure.spec.alpha :as s]
+   [clojure.string :as str]
+   [hickory.core :as hickory]
+   [hickory.select :as select]
+   [t2.html2 :as html2]
+   [t2.ttext :as ttext]))
+
+;; Nextjournal markdown sequence of AST nodes
+(s/def :content/nxmd seqable?)
+
+;; HTML string
+(s/def :content/htm string?)
 
 (def root "jtk")
 
 (def entry-globexpr "[0-9a-f][0-9a-f]*-*.{htm,ttext}")
 (def entry-globexpr-old "[0-9a-f][0-9a-f]*-*.ttext")
 
-(defn parse [s]
-  (let [[title date author & body-lines] (str/split-lines s)]
-    {:title title
-     :date date
-     :author author
-     :content (->> body-lines
-                   (str/join "\n")
-                   str/trim
-                   (#(str/split % #"\n\n"))
-                   (remove str/blank?)
-                   (map ttext/parse-paragraph))}))
+(defn parse-ttext [ttext-str]
+  (let [[title date author & body-lines] (str/split-lines ttext-str)]
+    {:jtk/title title
+     :jtk/date date
+     :jtk/author author
+     :content/nxmd (->> body-lines
+                        (str/join "\n")
+                        str/trim
+                        (#(str/split % #"\n\n"))
+                        (remove str/blank?)
+                        (map ttext/parse-paragraph))}))
 
-(defn render-entry [{:keys [title date author content]}]
+(defn select-tag-text [hickory tag]
+  (some->> hickory
+           (select/select (select/tag tag))
+           first
+           :content
+           (filter string?)
+           seq
+           str/join))
+
+(defn kw->tag [kw]
+  (if-let [n (namespace kw)]
+    (str n "-" (name kw))
+    (name kw)))
+
+(defn parse-htm [html-str]
+  (let [hickory (-> html-str hickory/parse hickory/as-hickory)]
+    (-> (reduce (fn [m kw]
+                  (if-let [text (select-tag-text hickory (kw->tag kw))]
+                    (assoc m kw text)
+                    m))
+                {}
+                [:jtk/title :jtk/date :jtk/author])
+        (assoc :content/htm html-str))))
+
+(defn render-entry [{:keys [jtk/title jtk/date jtk/author nxmd/nxmd]}]
   (str "\n<article>"
        "\n<header>"
        "\n<strong>" title "</strong>"
@@ -31,7 +65,7 @@
        "\n<span>" author "</span>"
        "\n</header>"
        "\n<section>"
-       (html2/render {:type :fragment :content content})
+       (html2/render {:type :fragment :content nxmd})
        "</section>"
        "\n</article>"))
 
@@ -53,7 +87,7 @@
 (defn build []
   (spit (str (fs/path root "index.html"))
         (->> (fs/glob root entry-globexpr-old)
-             (map (comp parse slurp str))
+             (map (comp parse-ttext slurp str))
              index
              wrap)))
 

@@ -3,4 +3,6 @@
  {preview (shell "python3 -m http.server 8009")
   browse (shell "open http://localhost:8009")
   build {:requires ([t2.build :as build])
-         :task (build/build build/all-ids)}}}
+         :task (build/build build/all-ids)}
+  build-jtk {:requires ([t2.jtk :as jtk])
+             :task (jtk/build)}}}

@@ -90,7 +90,8 @@
   (str "<!DOCTYPE html>\n"
        "<html><head><meta charset=\"utf-8\" />\n"
        "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />\n"
-       "<link rel=\"stylesheet\" href=\"jtk.css\" />\n\n"
+       "<link rel=\"stylesheet\" href=\"jtk.css\" />\n"
+       "<title>Julian og Teodor konverserer</title>\n"
        "</head>\n"
        "<body>\n"
        html-str

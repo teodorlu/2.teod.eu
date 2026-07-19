@@ -23,3 +23,8 @@ When the user asks to explain or demonstrate how the web works, create an HTML f
 - Use `nvk test` to run the tests.
 
 You shall never restart JVM processes without asking the user.
+
+## Exploratory Clojure code
+
+You may work within the current REPL context to learn and explore.
+Feel free to create files in `src/llm/...`.

@@ -39,4 +39,6 @@ jtk-indented {
 
 section > p > img {
     max-width: 100%;
+    margin: 0px auto;
+    display: block;
 }

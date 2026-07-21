@@ -60,15 +60,22 @@
   {"ttext" #'parse-ttext
    "htm" #'parse-htm})
 
+(defn file->id [file]
+  (-> file
+      fs/file-name
+      fs/strip-ext))
+
 (defn parse-file [f]
   (if-let [parse-fn (ext->parse-fn (fs/extension f))]
-    (-> f str slurp parse-fn)
+    (assoc (-> f str slurp parse-fn)
+           :jtk/id (file->id f))
     (throw (ex-info "unsupported extension"
                     {:extension (fs/extension f)
                      :file f}))))
+#_(file->id (fs/file "01-haha.txt"))
 
 (defn render-entry [entry]
-  (str "\n<article>"
+  (str "\n<article id=\"" (:jtk/id entry)  "\">"
        "\n<header>"
        "\n<strong>" (:jtk/title entry) "</strong>"
        "\n<span>" (:jtk/date entry) "</span>"

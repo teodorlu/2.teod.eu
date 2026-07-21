@@ -31,3 +31,8 @@ jtk-title, jtk-date, jtk-author {
 section > p:first-of-type {
     margin-top: 0;
 }
+
+two-indented {
+    display: block;
+    margin-left: 1rem;
+}

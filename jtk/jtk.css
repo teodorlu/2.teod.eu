@@ -32,7 +32,7 @@ section > p:first-of-type {
     margin-top: 0;
 }
 
-jtk-indented {
+jtk-indent {
     display: block;
     margin-left: 1rem;
 }

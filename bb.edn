@@ -5,4 +5,10 @@
   build {:requires ([t2.build :as build])
          :task (build/build build/all-ids)}
   build-jtk {:requires ([t2.jtk :as jtk])
-             :task (jtk/build)}}}
+             :task (jtk/build)}
+  lint.copy-configs {:doc "Import clj-kondo configs from dependencies"
+                     :requires ([clojure.string :as str])
+                     :task (let [cp (-> (shell {:out :string} "clojure -Spath")
+                                        :out
+                                        str/trim)]
+                             (shell (str "clj-kondo --lint " cp " --dependencies --copy-configs --skip-lint")))}}}

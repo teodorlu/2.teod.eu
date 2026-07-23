@@ -4,4 +4,5 @@
 (defprotocol Store
   (push-asset [this url asset-bytes])
   (list-assets [this])
+  (push-fragments [this url fragments])
   (respond [this url]))

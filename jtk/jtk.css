@@ -6,7 +6,8 @@ article {
   display: grid;
   grid-template-columns: minmax(9rem, 1fr) minmax(0, 1.618fr);
   gap: 0 2rem;
-  margin: 2lh 0;
+  margin: 1lh 0;
+  padding: 1lh 0;
 }
 
 article > header { text-align: right; }

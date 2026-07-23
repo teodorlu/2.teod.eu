@@ -2,4 +2,9 @@
  :deps {babashka/fs {:mvn/version "0.5.33"}
         io.github.nextjournal/markdown {:mvn/version "0.7.225"}
         lambdaisland/kaocha {:mvn/version "1.91.1392"}
-        org.clj-commons/hickory {:mvn/version "0.7.7"}}}
+        org.clj-commons/hickory {:mvn/version "0.7.7"}
+        andersmurphy/sqlite4clj {:git/url "https://github.com/andersmurphy/sqlite4clj"
+                                 :git/sha "fa3c54c378e34cd8c7736a714f7e48c4cb0c1f8f"}}
+ :aliases {:slite4clj-dev
+           {:override-deps {andersmurphy/sqlite4clj {:local/root "../sqlite4clj"}}
+            :jvm-opts ["--enable-native-access=ALL-UNNAMED"]}}}

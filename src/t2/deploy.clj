@@ -1,11 +1,12 @@
 (ns t2.deploy
   (:require [babashka.process]))
 
-(def target "root@t3:/var/www/3.teod.eu/")
+(def targets ["root@t3:/var/www/2.teod.eu/"
+              "root@t3:/var/www/3.teod.eu/"])
 (def include ["index.html" "d" "jtk" "css" "fonts"])
 (def exclude ["*.ttext" "*.ttex" "*.htm" ".DS_Store"])
 
-(defn deploy-argv []
+(defn deploy-argv [target]
   (into []
         cat
         [["rsync" "-a" "--delete" "--relative"]
@@ -13,12 +14,12 @@
          include
          [target]]))
 
-(defn deploy-dry-argv []
-  (conj (deploy-argv) "-n" "-i"))
+(defn deploy-dry-argv [target]
+  (conj (deploy-argv target) "-n" "-i"))
 
 (defn deploy []
-  (babashka.process/shell (deploy-argv)))
+  (run! #(babashka.process/shell (deploy-argv %)) targets))
 
 (defn deploy-dry []
-  (babashka.process/shell (deploy-dry-argv)))
+  (run! #(babashka.process/shell (deploy-dry-argv %)) targets))
 

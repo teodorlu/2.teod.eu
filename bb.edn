@@ -6,6 +6,16 @@
          :task (build/build build/published-ids build/draft-ids)}
   build-jtk {:requires ([t2.jtk :as jtk])
              :task (jtk/build)}
+  deploy {:requires ([t2.deploy :as deploy])
+          :task (deploy/deploy)}
+  deploy-dry {:requires ([t2.deploy :as deploy])
+              :task (deploy/deploy-dry)}
+  cljfmt {:extra-deps {dev.weavejester/cljfmt {:mvn/version "0.13.1"}}
+          :requires ([cljfmt.main :as cljfmt])
+          :task (apply cljfmt/-main *command-line-args*)}
+  reformat {:extra-deps {dev.weavejester/cljfmt {:mvn/version "0.13.1"}}
+            :requires ([cljfmt.main :as cljfmt])
+            :task (cljfmt/-main "fix" "src" "bb.edn")}
   lint.copy-configs {:doc "Import clj-kondo configs from dependencies"
                      :requires ([clojure.string :as str])
                      :task (let [cp (-> (shell {:out :string} "clojure -Spath")

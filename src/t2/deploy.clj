@@ -2,7 +2,7 @@
   (:require [babashka.process]))
 
 (def target "root@t3:/var/www/2.teod.eu/")
-(def include ["index.html" "d" "jtk" "css" "fonts"])
+(def include ["index.html" "components" "d" "jtk" "css" "fonts"])
 (def exclude ["*.ttext" "*.ttex" "*.htm" ".DS_Store"])
 
 (defn deploy-argv []

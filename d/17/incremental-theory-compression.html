@@ -4,8 +4,11 @@
 <style>
 p { font-family: monospace; margin: 1lh 0; }
 </style>
+<script type="module">
+  import T2Ref from "/components/t2-ref.mjs";
 
-</head>
+  customElements.define("t2-ref", T2Ref);
+</script></head>
 <body><a href="/">↰</a>
 <p>Incremental theory compression</p>
 <p>Implementation and explanation have different goals. An ideal implementation is non-reducible and efficient. It cannot be reduced to a simpler implementation, and it does its work without too much overhead. The implementation is the reduced, final state.</p>

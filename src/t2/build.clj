@@ -8,23 +8,24 @@
    [t2.html2 :as h2]
    [t2.ttext]))
 
-(defn load-components-script []
+(def components-fragment
   "<script type=\"module\">
   import T2Ref from \"/components/t2-ref.mjs\";
 
   customElements.define(\"t2-ref\", T2Ref);
 </script>")
 
+(def css-fragment
+  "<link rel=\"stylesheet\" type=\"text/css\" href=\"/css/t2.css\">
+<style>p { font-family: monospace; margin: 1lh 0; }</style>")
+
 (defn wrap [html-str]
   (str "<!DOCTYPE html>\n"
        (h/html
-        (h/head "<meta charset=\"utf-8\" />"
-                "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />"
-                 "<style>
-p { font-family: monospace; margin: 1lh 0; }
-</style>"
-                 (load-components-script)
-                 )
+          (h/head "<meta charset=\"utf-8\" />"
+                  "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />"
+                  css-fragment
+                  components-fragment)
         (h/body html-str))))
 
 (defn dot-ttext->dot-html [s]

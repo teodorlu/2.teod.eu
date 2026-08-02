@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="/css/t2.css">
+<style>p { font-family: monospace; margin: 1lh 0; }</style>
+<script type="module">
+  import T2Ref from "/components/t2-ref.mjs";
+
+  customElements.define("t2-ref", T2Ref);
+</script></head>
+<body><p><a href="/">↰</a></p>
+<p>
+  <strong>Komponentdesign</strong>,
+  <em>et glimt av HTML som hypermedium</em>
+
+<p>
+  Hvordan mente egentlig de som lagde HTML at HTML skulle brukes?
+  Er design å dele ting opp?
+  Hvordan rigger vi oss for å få trent på å gjøre det samme?
+
+<p>
+  Disse spørsmålene kommer fra Ted Nelson og Tim Berners Lee (HTML), Rich Hickey (Clojure) og Joe Armstrong (Erlang).
+  I dag vil jeg ta dere på min lille reise rundt spørsmålene.
+
+<p>
+  Jeg har lenge vært usikker på CSS.
+  Det er så mye greier, og det kan brukes på så mange måter.
+  Jeg har sett fullstendig virrvarr av CSS-kode der det er klasser overalt, og jeg ikke klarer å få oversikt over hvilken bruk av klasser som gir hvilken effekt.
+  Jeg har sett kode pepret med så mye tailwind at jeg ikke klarer å se koden.
+
+<p>
+  Det siste året har en annen måte å se på CSS sneket seg inn,
+  <t2-indent>
+    hvorfor designer vi ikke komponenter?
+  </t2-indent>
+  <t2-indent>
+    neste ordrett sitat fra Eirik for nesten to år siden,
+    <t2-indent>
+      "Teodor,<br>
+      <t2-indent-1>
+        Du vet du bare kan finne på dine egne elementer?<br />
+        Det er lov å bare lage HTML med &lt;mb-list&gt; og ta det derfra!"
+      </t2-indent-1>
+    </t2-indent>
+  </t2-indent>
+
+<p>
+  Er dette den rette måten å gjøre det på?
+  Aner ikke.
+  Men det er en smal måte å gjøre det på.
+  Vi designer komponenter fra det små.
+  De skal gjøre akkurat jobben sin, og ikke mer.
+
+<p>
+  La oss begynne.
+  Først trenger vi en måte å demonstrere HTML.
+  Da ønsker vi å se noe HTML, samt hvordan den rendres.
+  Hvordan skal vi lage det?
+  ...
+  Webkomponent!
+</body></html>

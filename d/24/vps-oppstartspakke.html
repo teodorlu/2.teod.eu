@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="/css/t2.css">
+<style>p { font-family: monospace; margin: 1lh 0; }</style>
+<script type="module">
+  import T2Ref from "/components/t2-ref.mjs";
+
+  customElements.define("t2-ref", T2Ref);
+</script></head>
+<body><p><a href="/">↰</a></p>
+<pre>
+motivasjon: søken etter det enklere
+
+
+agenda
+  demo
+  qa
+  la folk prøve selv?
+
+
+1 finn på server-navn
+2 lag VPS på Hetzner, putt inn egen public key
+  → skriv ned IP
+3 putt server-IP i ~/.ssh/config
+  → verifiser, ssh
+4 pek domene til IP
+  → ping IP / ping domene
+5 installer Caddy
+  → caddy --version
+  → systemctl status caddy
+6 få Caddy til å servere /var/www/domene på forespørsler til domene (se ./Caddyfile)
+  → /etc/caddy/Caddyfile (se ./Caddyfile)
+  → systemctl cat caddy
+7 systemctl reload caddy
+8 putt filer i /var/www/domene
+9 besøk domene
+
+
+Bonus gitt tid: vedlikehold
+Metode: task-runner med SSH og rsync
+
+
+installer Caddy, kilde https://caddyserver.com/docs/install#debian-ubuntu-raspbian
+
+	apt install -y debian-keyring debian-archive-keyring apt-transport-https curl
+	curl -1sLf 'https://dl.cloudsmith.io/public/caddy/stable/gpg.key' | gpg --dearmor -o /usr/share/keyrings/caddy-stable-archive-keyring.gpg
+	curl -1sLf 'https://dl.cloudsmith.io/public/caddy/stable/debian.deb.txt' | tee /etc/apt/sources.list.d/caddy-stable.list
+	apt update
+	apt install -y caddy
+	systemctl enable --now caddy
+
+Caddyfile
+
+	domene {
+		root * /var/www/domene
+		file_server
+	}
+
+.ssh/config
+
+	Host t5
+	  HostName 204.168.193.232
+	  User root
+	  IdentityFile ~/.ssh/id_ed25519
+</pre>
+</body></html>

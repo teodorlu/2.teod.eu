@@ -16,8 +16,7 @@
 </script>")
 
 (def css-fragment
-  "<link rel=\"stylesheet\" type=\"text/css\" href=\"/css/t2.css\">
-<style>p { font-family: monospace; margin: 1lh 0; }</style>")
+  "<link rel=\"stylesheet\" type=\"text/css\" href=\"/css/t2.css\">")
 
 (defn wrap [html-str]
   (str "<!DOCTYPE html>\n"

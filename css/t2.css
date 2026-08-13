@@ -1,4 +1,6 @@
 p { font-family: monospace; margin: 1lh 0; }
+ul { font-family: monospace; margin: 1lh 0; padding-left: 1lh;}
+
 t2-indent {
   display: block;
   margin-left: 1rem;

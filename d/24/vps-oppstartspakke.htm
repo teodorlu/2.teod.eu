@@ -39,12 +39,14 @@ installer Caddy, kilde https://caddyserver.com/docs/install#debian-ubuntu-raspbi
 	apt install -y caddy
 	systemctl enable --now caddy
 
+
 Caddyfile
 
 	domene {
 		root * /var/www/domene
 		file_server
 	}
+
 
 .ssh/config
 

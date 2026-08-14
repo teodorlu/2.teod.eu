@@ -21,15 +21,15 @@ agenda
 1 finn på server-navn
 2 lag VPS på Hetzner, putt inn egen public key
   → skriv ned IP
-3 putt server-IP i ~/.ssh/config
+3 putt server-IP i ~/.ssh/config (se under)
   → verifiser, ssh
 4 pek domene til IP
   → ping IP / ping domene
-5 installer Caddy
+5 installer Caddy (se under)
   → caddy --version
   → systemctl status caddy
-6 få Caddy til å servere /var/www/domene på forespørsler til domene (se ./Caddyfile)
-  → /etc/caddy/Caddyfile (se ./Caddyfile)
+6 få Caddy til svare med filer fra /var/www/domene på forespørsler til domene
+  → /etc/caddy/Caddyfile (se under)
   → systemctl cat caddy
 7 systemctl reload caddy
 8 putt filer i /var/www/domene
@@ -37,7 +37,8 @@ agenda
 
 
 Bonus gitt tid: vedlikehold
-Metode: task-runner med SSH og rsync
+                (kjør ssh og rsync fra task-runner)
+Bonus 2: skru på zstd-komprimering i Caddy
 
 
 installer Caddy, kilde https://caddyserver.com/docs/install#debian-ubuntu-raspbian

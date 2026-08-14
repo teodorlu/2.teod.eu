@@ -6,6 +6,9 @@
          :task (build/build build/published-ids build/draft-ids)}
   build-jtk {:requires ([t2.jtk :as jtk])
              :task (jtk/build)}
+  build-deploy (do
+                (shell "bb build")
+                (shell "bb deploy"))
   deploy {:requires ([t2.deploy :as deploy])
           :task (deploy/deploy)}
   deploy-dry {:requires ([t2.deploy :as deploy])

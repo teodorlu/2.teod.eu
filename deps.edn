@@ -3,7 +3,8 @@
         babashka/process {:mvn/version "0.6.25"}
         io.github.nextjournal/markdown {:mvn/version "0.7.225"}
         lambdaisland/kaocha {:mvn/version "1.91.1392"}
-        org.clj-commons/hickory {:mvn/version "0.7.7"}}
+        org.clj-commons/hickory {:mvn/version "0.7.7"}
+        io.github.teodorlu/assetnow {:local/root "../assetnow"}}
  :aliases
  {:dev
   {:extra-deps

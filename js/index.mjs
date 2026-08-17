@@ -22,4 +22,5 @@ export const d = {
   "25": {"href": "/d/25/tukleverdig.html", "text": "d/25/tukleverdig.html"},
   "26": {"href": "/d/26/spectacle-spetakkel.html", "text": "d/26/spectacle-spetakkel.html"},
   "27": {"href": "/d/27/bidrag-nåde-glede.html", "text": "d/27/bidrag-nåde-glede.html"},
+  "28": {"href": "/d/28/antispektakulær.html", "text": "d/28/antispektakulær.html"},
 };

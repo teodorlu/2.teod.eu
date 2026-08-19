@@ -13,4 +13,5 @@
          (strglob "d" "**/*.html")
          (strglob "fonts" "*")
          (strglob "js" "*.mjs")
+         (strglob "components" "*.mjs")
          #{"jtk/index.html" "jtk/jtk.css"})))

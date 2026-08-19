@@ -12,4 +12,5 @@
                     "fonts/nunito-latin.woff2"
                     "js/index.mjs"
                     "jtk/index.html"
-                    "jtk/jtk.css"})))
+                    "jtk/jtk.css"
+                    "components/t2-ref.mjs"})))

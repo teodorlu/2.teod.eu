@@ -1,4 +1,4 @@
-(ns t2.index
+(ns t2.manifest
   (:require [babashka.fs :as fs]
             [clojure.set :as set]))
 

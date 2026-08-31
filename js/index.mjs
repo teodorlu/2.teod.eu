@@ -23,4 +23,6 @@ export const d = {
   "26": {"href": "/d/26/spectacle-spetakkel.html", "text": "d/26/spectacle-spetakkel.html"},
   "27": {"href": "/d/27/bidrag-nåde-glede.html", "text": "d/27/bidrag-nåde-glede.html"},
   "28": {"href": "/d/28/antispektakulær.html", "text": "d/28/antispektakulær.html"},
+  "29": {"href": "/d/29/feedback-one.html", "text": "d/29/feedback-one.html"},
+  "2a": {"href": "/d/2a/the-simplicity-ethos.html", "text": "d/2a/the-simplicity-ethos.html", "draft": true},
 };

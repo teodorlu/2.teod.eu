@@ -90,7 +90,7 @@
   (let [sources (into #{} (map (comp str d/find)) source-ids)]
     (run! fs/delete-if-exists (map dot-ttext->dot-html sources))))
 
-(def draft-ids #{"1c" "20" "21" "23" "2a"})
+(def draft-ids #{"1c" "20" "21" "23"})
 (def all-ids (set (d/all)))
 (def published-ids (set/difference all-ids draft-ids))
 

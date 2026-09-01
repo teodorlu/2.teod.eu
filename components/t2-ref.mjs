@@ -9,6 +9,10 @@
 import { d } from "/js/index.mjs";
 
 const references = {
+  "anders-haugeto/substack": {
+    href: "https://substack.com/@haugeto",
+    text: "Anders Haugeto"
+  },
   "jack-rusher/homesteading": {
     href: "https://jackrusher.com/journal/homesteading.html",
     text: "Homesteading",

@@ -11,10 +11,10 @@
 Be brief.
 When asked a question, answer that question.
 
-## Agent demos
+## Options
 
-When the user asks to explain or demonstrate how the web works, create an HTML file in `agent-demos/` that demonstrates the concept.
-Details for agent demos: [agent-demos.md](agent-demos.md).
+Contrasting options for a decision live in the `2.teod.eu-optionspace`
+sidecar, per the optionspace rule in `tlh.factory-spec/sidecars.md`.
 
 ## Clojure REPL discipline
 

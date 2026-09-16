@@ -21,4 +21,3 @@
 
 (defn deploy-dry []
   (babashka.process/shell (deploy-dry-argv)))
-

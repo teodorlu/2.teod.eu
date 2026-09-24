@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="/css/t2.css">
+<script type="module">
+  import T2Ref from "/components/t2-ref.mjs";
+
+  customElements.define("t2-ref", T2Ref);
+</script></head>
+<body><p><a href="/">↰</a></p>
+<p><strong>Designing for determinism</strong></p>
+
+<p>
+  "Designing for determinism" has been buzzing in the back of my mind.
+  Opinion:
+</p>
+
+<blockquote>
+  to design for determinism is the engineering part of software engineering, when the problem is solved.
+</blockquote>
+
+<p>
+  Performance folds nicely into this view. To build good performance, you need a deterministic system, so that you can build deterministic performance characteristics. Then you can choose to which degree performance characteristics is part of your problem definition.
+</p>
+
+<p>
+My orignal trade is civil engineering, and I've been trying to get a grip on how civil engineering culture is similar to and is different to the culture I've seen programmers take part in since. What civil engineers do great is split problem definition neatly from deterministic things. Great civil engineers will give you accurate predictions about reality when speaking about things they've seen before, and will help you increase determinism over time for novel problems.
+</p>
+
+<p>
+  To apply Unix policy/mechanism drives your system design towards determinism. You want to make mechanisms as deterministic as possible; you achieve that by splitting cleanly from policy. (for further reading, see Arne Brasser's commentary on applying the policy/mechanism split to code: https://lambdaisland.com/blog/2022-03-10-mechanism-vs-policy)
+</p>
+
+<p>
+Making a clean Functional core / imperative shell split drives your system towards determinism, as pure functions are deterministic. You can further drive your whole system towards determinism by
+</p>
+
+<ol>
+  <li>minimizing the size of your imperative shell</li>
+  <li>moving conditionals from your imperative shell to your functional core.</li>
+</ol>
+
+<p>
+  So, what remains when we subtract the eigneering from our trade? To design for utility. To solve our problems well. Our craft of writing code. Probably more. Software isn't only engineering.
+  But I feel I've seen too many cases of bad software where people don't understand or agree with the fact that we should be designing for determinism.
+  Fat morph Datastar too; the system is more deterministic when decisions are made on the server and the client has fewer if-statements.
+  And Clojure too. Remove mutation from code that doesn't need to mutate -> more determinism.
+  And Datomic, probably. But I'm too deep in the Datomic mindset to be able to effectively contrast to a non-Datomic worldview.
+  And Stardust. Deterministic derived data, with deterministic performance. The whole "cost per statement" thing gives yet another axis to drive determinism.
+  "more deterministic" can be considered vague, so you need some way to say "deterministic in what way" in order to make objective claims.
+</p>
+
+<p>/rant</p>
+</body></html>

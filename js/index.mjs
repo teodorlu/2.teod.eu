@@ -25,4 +25,5 @@ export const d = {
   "28": {"href": "/d/28/antispektakulær.html", "text": "d/28/antispektakulær.html"},
   "29": {"href": "/d/29/feedback-one.html", "text": "d/29/feedback-one.html"},
   "2a": {"href": "/d/2a/the-simplicity-ethos.html", "text": "d/2a/the-simplicity-ethos.html"},
+  "2b": {"href": "/d/2b/designing-for-determinism-rant.html", "text": "d/2b/designing-for-determinism-rant.html"},
 };
